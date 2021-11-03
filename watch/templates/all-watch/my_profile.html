@@ -1,0 +1,34 @@
+{% extends 'all-watch/base.html' %}
+{% load bootstrap4 %]
+{% load static %}
+
+
+{% block styles %}
+
+    {{block.super}}
+    <link rel="stylesheet" href="{% static 'css/profile.css'%}">
+
+{% endblock %}
+
+{% block content %}
+{{ block.super}}
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-6">
+            <div class="well well-sm">
+                <div class="row">
+                    <div class="col-sm-6 col-md-4">
+                        <img src={{single_profile.profile_pic.url}} alt="" class="rounded-circle account-img img-responsive" />
+                    </div>
+                    <div class="col-sm-6 col-md-8">
+                        <h4>
+                            {{current_user.username}}</h4>
+                        <small><cite>{{single_profile.bio}}</cite></small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock %}
