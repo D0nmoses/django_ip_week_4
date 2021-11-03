@@ -10,18 +10,40 @@
 {{block.super}}
 
 <div class="container">
-    <div class="row">
-        {% for business in businesses %}
-        <div class="col-sm-6">
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-title">{{business.name}}</h5>
-                <p class="card-text">Owned by {{business.owner}}</p><br />
-                <p class="card-text">Contact info-> Email: {{business.email}} Phone: {{business.contact}}</p><br />
-              </div>
-            </div>
-        {% endfor %}
+    <div class="container">
+        <br/>
+        <div class="row justify-content-center">
+                            <div class="col-12 col-md-10 col-lg-8">
+                                <form class="card card-sm">
+                                    <div class="card-body row no-gutters align-items-center">
+                                        <div class="col-auto">
+                                            <i class="fas fa-search h4 text-body"></i>
+                                        </div>
+                                        <!--end of col-->
+                                        <div class="col">
+                                            <input class="form-control form-control-lg form-control-borderless" type="search" placeholder="Search topics or keywords">
+                                        </div>
+                                        <!--end of col-->
+                                        <div class="col-auto">
+                                            <button class="btn btn-lg btn-success" action="{% url 'search_results' %}" type="submit">Search</button>
+                                        </div>
+                                        <!--end of col-->
+                                    </div>
+                                </form>
+                            </div>
+                            <!--end of col-->
+                        </div>
     </div>
+    {% for business in businesses %}
+    <div class="col-sm-6">
+        <div class="card">
+            <div class="card-body">
+            <h5 class="card-title">{{business.name}}</h5>
+            <p class="card-text">Owned by {{business.owner}}</p><br />
+            <p class="card-text">Contact info-> Email: {{business.email}} Phone: {{business.contact}}</p><br />
+            </div>
+        </div>
+    {% endfor %}
 </div>
 
 
