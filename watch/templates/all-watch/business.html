@@ -1,0 +1,28 @@
+{% extends 'all-watch/base.html' %}
+{% load bootstrap4 %]
+{% load static %}
+
+{% block styles%}
+    {{block.super}}
+    <link rel="stylesheet" href="{% static 'css/home.css'%}">
+{% endblock %}
+{% block content %}
+{{block.super}}
+
+<div class="container">
+    <div class="row">
+        {% for business in businesses %}
+        <div class="col-sm-6">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">{{business.name}}</h5>
+                <p class="card-text">Owned by {{business.owner}}</p><br />
+                <p class="card-text">Contact info-> Email: {{business.email}} Phone: {{business.contact}}</p><br />
+              </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+
+{% endblock %}
