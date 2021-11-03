@@ -38,7 +38,7 @@ def new_post(request):
 
             post.save()
 
-            return redirect(home, current_user.id)
+            return redirect(home)
 
     else:
 

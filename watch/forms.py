@@ -8,4 +8,4 @@ class NewPostForm(forms.ModelForm):
     '''
     class Meta:
         model = Post
-        exclude = ['username','profile']
+        exclude = ['user','profile']

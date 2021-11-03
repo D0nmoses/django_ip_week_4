@@ -54,7 +54,10 @@ def save_user_profile(sender, instance, **kwargs):
 
 class Post(models.Model):
     post = models.TextField()
-    username = models.ForeignKey(User,on_delete=models.CASCADE)
-    profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
+    profile = models.ForeignKey(Profile, on_delete=models.CASCADE, default=None)
     post_date = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.user.username
 
