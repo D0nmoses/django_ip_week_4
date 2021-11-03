@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from .models import Post, Profile, Neighborhood
 from django.contrib.auth.decorators import login_required
 from .forms import NewPostForm
+from django.http import Http404
+from django.core.exceptions import ObjectDoesNotExist
 
 
 # Create your views here.
@@ -45,3 +47,23 @@ def new_post(request):
     title = 'Create Post'
 
     return render(request,'all-watch/new_post.html', {"form":form})
+
+@login_required(login_url='/accounts/login/')
+def profile(request,id):
+    '''	
+    View function to display the profile of the logged in user when they click on the user icon	
+    '''
+    current_user = request.user
+
+    try:
+
+        single_profile = Profile.objects.get(user=current_user.id)
+
+        title = f'{current_user.username}\'s'
+
+        posts = Post.objects.filter(user=current_user.id)
+
+        return render(request, 'all-posts/my_profile.html', {"title":title,"single_profile":single_profile,"current_user":current_user,"posts":posts})
+
+    except ObjectDoesNotExist:
+        raise Http404()
