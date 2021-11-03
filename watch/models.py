@@ -34,9 +34,10 @@ class Business(models.Model):
 class Profile(models.Model):
     profile_pic = models.ImageField(upload_to='avatars/')
     neighbourhood = models.ForeignKey(Neighborhood,on_delete=models.CASCADE)
-    username = models.ForeignKey(User,on_delete=models.CASCADE)
+    user = models.OneToOneField(User,on_delete=models.CASCADE)
     name =models.CharField(max_length=100)
     email = models.EmailField()
+    bio = models.TextField(max_length=150, default="New Here")
 
     def __str__(self):
         return self.username
