@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Post, Profile, Neighborhood
+from .models import Post, Profile, Neighborhood, Business
 from django.contrib.auth.decorators import login_required
 from .forms import NewPostForm
 from django.http import Http404
@@ -67,3 +67,9 @@ def profile(request,id):
 
     except ObjectDoesNotExist:
         raise Http404()
+
+@login_required(login_url='/accounts/login')
+def business(request):
+    businesses = Business.objects.all()
+
+    return render(request, 'all-watch/business.html',{'businesses':businesses})
