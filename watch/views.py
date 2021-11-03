@@ -73,3 +73,18 @@ def business(request):
     businesses = Business.objects.all()
 
     return render(request, 'all-watch/business.html',{'businesses':businesses})
+
+@login_required(login_url='/accounts/login')
+def search_results(request):
+    business = Business.objects.all()
+    
+    if 'name' in request.GET and request.GET["name"]:
+        search_term = request.GET.get("name")
+        searched_businesses = Business.search_by_name(search_term)
+        message = f"{search_term}"
+
+        return render(request, 'all-watch/search.html',{"message":message,"businesses": searched_businesses})
+
+    else:
+        message = "You haven't searched for any term"
+        return render(request, 'all-watch/search.html',{"message":message})
