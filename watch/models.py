@@ -31,6 +31,13 @@ class Business(models.Model):
     def __str__(self):
         return self.name
 
+    @classmethod
+    def search_by_name(cls, search_term):
+        businesses = cls.objects.filter(name__icontains=search_term)
+        return businesses
+
+
+
 class Profile(models.Model):
     profile_pic = models.ImageField(upload_to='avatars/')
     user = models.OneToOneField(User,on_delete=models.CASCADE)
