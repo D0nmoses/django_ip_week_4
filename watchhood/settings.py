@@ -77,7 +77,7 @@ WSGI_APPLICATION = 'watchhood.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.posgresql',
+        'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'watch',
         'USER':'postgres',
         'PASSWORD':'D0nm0ses'

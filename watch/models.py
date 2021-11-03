@@ -44,3 +44,5 @@ class Post(models.Model):
     username = models.ForeignKey(User,on_delete=models.CASCADE)
     neighbourhood= models.ForeignKey(Neighborhood,on_delete=models.CASCADE)
     post_date = models.DateTimeField(auto_now_add=True)
+
+    
