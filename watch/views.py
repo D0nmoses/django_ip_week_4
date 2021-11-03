@@ -5,10 +5,13 @@ from .forms import NewPostForm
 
 
 # Create your views here.
+
+@login_required(login_url='/accounts/login')
 def home(request):
     posts = Post.objects.all()
 
     return render(request, 'all-watch/home.html',{'posts': posts})
+
 
 @login_required(login_url='/accounts/login')
 def new_post(request):
