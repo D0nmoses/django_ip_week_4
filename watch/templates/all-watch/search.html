@@ -1,0 +1,27 @@
+{%extends 'all-watch/base.html'%}
+{% block content %}
+<div class="container">
+
+  <div class="row">
+    {% if businesses %}
+      <h2>Found {{ businesses|length }} of searched term {{message}}</h2>
+    {% else %}
+      <h2> Found 0 businesses for the search term {{message}}</h2>
+    {% endif %}
+
+  </div>
+
+  <div class="row">
+
+    {% if businessess %}
+
+    {% for business in businessess%}
+    <div class="col-sm-6">
+        <div class="card">
+            <div class="card-body">
+            <h5 class="card-title">{{business.name}}</h5>
+            <p class="card-text">Owned by {{business.owner}}</p><br />
+            <p class="card-text">Contact info-> Email: {{business.email}} Phone: {{business.contact}}</p><br />
+        </div>
+    </div>
+    {% endfor %}
