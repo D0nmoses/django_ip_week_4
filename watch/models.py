@@ -33,7 +33,6 @@ class Business(models.Model):
 
 class Profile(models.Model):
     profile_pic = models.ImageField(upload_to='avatars/')
-    neighbourhood = models.ForeignKey(Neighborhood,on_delete=models.CASCADE)
     user = models.OneToOneField(User,on_delete=models.CASCADE)
     name =models.CharField(max_length=100)
     email = models.EmailField()
@@ -56,6 +55,6 @@ def save_user_profile(sender, instance, **kwargs):
 class Post(models.Model):
     post = models.TextField()
     username = models.ForeignKey(User,on_delete=models.CASCADE)
-    neighbourhood= models.ForeignKey(Neighborhood,on_delete=models.CASCADE)
+    profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
     post_date = models.DateTimeField(auto_now_add=True)
 
